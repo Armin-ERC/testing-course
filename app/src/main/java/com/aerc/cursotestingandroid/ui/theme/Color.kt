@@ -1,4 +1,4 @@
-package com.aerccursotestingandroid.ui.theme
+package com.aerc.cursotestingandroid.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

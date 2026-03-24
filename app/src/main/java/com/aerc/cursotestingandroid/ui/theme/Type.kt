@@ -1,4 +1,4 @@
-package com.aerccursotestingandroid.ui.theme
+package com.aerc.cursotestingandroid.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
