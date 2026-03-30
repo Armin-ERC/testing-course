@@ -29,6 +29,4 @@ data class PromotionResponse(
     val startAtEpoch: Long? = null,
     @SerialName("endAtEpoch")
     val endAtEpoch: Long? = null,
-) {
-
-}
+)
