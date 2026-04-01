@@ -8,7 +8,9 @@ import com.aerc.cursotestingandroid.productlist.data.local.database.MiniMarketDa
 import com.aerc.cursotestingandroid.productlist.data.local.database.dao.ProductDao
 import com.aerc.cursotestingandroid.productlist.data.local.database.dao.PromotionDao
 import com.aerc.cursotestingandroid.productlist.data.repository.ProductRepositoryImpl
+import com.aerc.cursotestingandroid.productlist.data.repository.PromotionRepositoryImpl
 import com.aerc.cursotestingandroid.productlist.domain.repository.ProductRepository
+import com.aerc.cursotestingandroid.productlist.domain.repository.PromotionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +32,12 @@ object DataModule {
     @Singleton
     fun provideProductRepository(productRepositoryImpl: ProductRepositoryImpl): ProductRepository {
         return productRepositoryImpl
+    }
+
+    @Provides
+    @Singleton
+    fun providePromotionRepository(promotionRepositoryImpl: PromotionRepositoryImpl): PromotionRepository {
+        return promotionRepositoryImpl
     }
 
     @Provides
