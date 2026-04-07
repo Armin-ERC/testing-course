@@ -4,17 +4,37 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.aerc.cursotestingandroid.core.domain.model.ThemeMode
 import com.aerc.cursotestingandroid.core.presentation.navigation.NavGraph
 import com.aerc.cursotestingandroid.ui.theme.CursoTestingAndroidTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CursoTestingAndroidTheme {
+            val themeMode by mainViewModel.themeMode.collectAsStateWithLifecycle(
+                initialValue = ThemeMode.System
+            )
+
+            val darkTheme = when (themeMode) {
+                ThemeMode.Dark -> true
+                ThemeMode.Light -> false
+                ThemeMode.System -> isSystemInDarkTheme()
+            }
+
+            CursoTestingAndroidTheme(
+                darkTheme = darkTheme
+            ) {
                 NavGraph()
             }
         }

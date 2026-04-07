@@ -38,7 +38,8 @@ import com.aerc.cursotestingandroid.productlist.presentation.components.ProductI
 
 @Composable
 fun ProductListScreen(
-    productListViewModel: ProductListViewModel = hiltViewModel()
+    productListViewModel: ProductListViewModel = hiltViewModel(),
+    navigateToSettings : () -> Unit
 ) {
 
     val uiState by productListViewModel.uiState.collectAsStateWithLifecycle()
@@ -63,7 +64,8 @@ fun ProductListScreen(
                     productListViewModel.setFiltersVisible(
                         showFilters
                     )
-                })
+                },
+                onSettingsSelected = {navigateToSettings()})
         },
         snackbarHost = { SnackbarHost(snackBarHostState) }
     ) { paddingValues ->

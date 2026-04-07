@@ -19,8 +19,8 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 fun HomeTopAppBar(
     modifier: Modifier = Modifier,
     filtersVisible: Boolean = true,
-    onFiltersSelect: (Boolean) -> Unit = {},
-    onSettingsSelect: () -> Unit = {}
+    onFiltersSelect: (Boolean) -> Unit,
+    onSettingsSelected: () -> Unit,
 ) {
     TopAppBar(
         title = {
@@ -33,14 +33,14 @@ fun HomeTopAppBar(
         actions = {
             IconButton(onClick = { onFiltersSelect(!filtersVisible) }) {
                 Icon(
-                    imageVector = Icons.Default.Settings,
+                    imageVector = Icons.Default.FilterList,
                     contentDescription = if (filtersVisible) "Ocultar filtros" else "Mostrar filtros",
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
-            IconButton(onClick = { onSettingsSelect() }) {
+            IconButton(onClick = { onSettingsSelected() }) {
                 Icon(
-                    imageVector = Icons.Default.FilterList,
+                    imageVector = Icons.Default.Settings,
                     contentDescription = "Settings",
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
