@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.aerc.cursotestingandroid.productlist.domain.model.Product
 import com.aerc.cursotestingandroid.productlist.domain.model.ProductWithPromotion
 import com.aerc.cursotestingandroid.productlist.presentation.components.Filters
 import com.aerc.cursotestingandroid.productlist.presentation.components.HomeTopAppBar
@@ -44,7 +43,7 @@ fun ProductListScreen(
 
     val uiState by productListViewModel.uiState.collectAsStateWithLifecycle()
     val snackBarHostState = remember { SnackbarHostState() }
-    val filtersVisible by productListViewModel.filtersVisible.collectAsStateWithLifecycle()
+    val filtersVisible by productListViewModel.filterVisible.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
         productListViewModel.events.collect { event ->
@@ -104,7 +103,7 @@ fun ProductListScreen(
                                 )
                             },
                             onSortSelected = { sortOption ->
-                                productListViewModel.setOrder(
+                                productListViewModel.setSortOption(
                                     sortOption
                                 )
                             }
